@@ -25,10 +25,7 @@ jobs:
           REMOTE_USER: ${{ secrets.USERNAME }}
           TARGET: ${{ secrets.TARGET_DIR }}
          
-          run: |
-         
-           echo "${{secrets.EC2_SSH_KEY}}" > deploy_key
-           chmod 400 ./deploy_key
+      
       - name: Executing remote ssh commands using ssh key
         uses: appleboy/ssh-action@master
         with:
