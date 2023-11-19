@@ -1,6 +1,6 @@
-name: Push-to-EC2 
+name: Push-to-EC2
 
-# Trigger deployment only on push to main branc
+# Trigger deployment only on push to main branch
 on:
   push:
     branches:
@@ -17,22 +17,18 @@ jobs:
 
       - name: Deploy to Server 1
         uses: easingthemes/ssh-deploy@main
-
         env:
-        
           SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
           REMOTE_HOST: ${{ secrets.HOST_DNS }}
           REMOTE_USER: ${{ secrets.USERNAME }}
           TARGET: ${{ secrets.TARGET_DIR }}
-         
-      
+
       - name: Executing remote ssh commands using ssh key
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST_DNS }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
-          port: 22
           script: |
             sudo apt-get -y update
             sudo apt-get install -y apache2
