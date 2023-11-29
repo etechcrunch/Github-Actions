@@ -12,15 +12,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-      - name: Build & Deploys
+      - uses: actions/checkout@v2
+      - name: Build & Deploy
         env:
            PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
            HOSTNAME: ${{ secrets.HOST_DNS }}
            USER_NAME: ${{ secrets.USERNAME }}
            TARGET: ${{ secrets.TARGET_DIR }}                 
         
-         run: |
+        run: |
            echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
            ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
               sudo apt-get -y update
