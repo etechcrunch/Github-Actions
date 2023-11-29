@@ -13,28 +13,17 @@ jobs:
 
     steps:
       - name: Checkout the files
-        uses: actions/checkout@v3
-
-
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          
-          aws-access-key-id: ${{ secrets.USERNAME }}
-          aws-secret-access-key: ${{ secrets.EC2_SSH_KEY }}  
-
-      - name: Deploy to Server 1
-        id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v1
+        uses: actions/checkout@v2
         env:
-          SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
-          REMOTE_HOST: ${{ secrets.HOST_DNS }}
-          REMOTE_USER: ${{ secrets.USERNAME }}
+          PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
+          HOSTNAME: ${{ secrets.HOST_DNS }}
+          USER_NAME: ${{ secrets.USERNAME }}
           TARGET: ${{ secrets.TARGET_DIR }}
-
-     
-                    
+          
+                        
           run: |
+            echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+            ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
             sudo apt-get -y update
             sudo apt-get install -y apache2
             sudo systemctl start apache2
