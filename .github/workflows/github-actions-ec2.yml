@@ -13,7 +13,7 @@ jobs:
 
     steps:
       - name: Build & Deploys
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
         env:
            PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
            HOSTNAME: ${{ secrets.HOST_DNS }}
