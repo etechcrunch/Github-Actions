@@ -19,7 +19,7 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-region: ${{ secrets.HOST_DNS }}
+          aws-region: ${{ env.AWS_REGION }}
           aws-access-key-id: ${{ secrets.USERNAME }}
           aws-secret-access-key: ${{ secrets.EC2_SSH_KEY }}  
 
