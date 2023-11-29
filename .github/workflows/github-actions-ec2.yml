@@ -12,8 +12,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Build & Deploys
       - uses: actions/checkout@v3
+      - name: Build & Deploys
         env:
            PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
            HOSTNAME: ${{ secrets.HOST_DNS }}
