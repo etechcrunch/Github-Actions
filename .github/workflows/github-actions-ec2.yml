@@ -21,10 +21,10 @@ jobs:
            TARGET: ${{ secrets.TARGET_DIR }}                 
         
         run: |
-           mkdir ~/.ssh
-           echo "$PRIVATE_KEY" > ~/.ssh/id_rsa
-           chmod 600 ~/.ssh/id_rsa
-           #echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+           #mkdir ~/.ssh
+           #echo "$PRIVATE_KEY" > ~/.ssh/id_rsa
+           #chmod 600 ~/.ssh/id_rsa
+           echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
            ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} 
               sudo apt-get -y update
               sudo apt-get install -y apache2
