@@ -9,8 +9,8 @@ on:
 jobs:
   deploy:
     name: Deploy to EC2 on main branch push
-    #runs-on: ubuntu-latest
-    runs-on: ubuntu:focal-20210921
+    runs-on: ubuntu-latest
+    #runs-on: ubuntu:focal-20210921
 
     steps:
       - uses: actions/checkout@v2
