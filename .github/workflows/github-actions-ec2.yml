@@ -9,8 +9,8 @@ on:
 jobs:
   deploy:
     name: Deploy to EC2 on main branch push
-    #runs-on: ubuntu-latest
-    runs-on: ubuntu:focal-20210921
+    runs-on: ubuntu-latest
+    #runs-on: ubuntu:focal-20210921
 
     steps:
       - uses: actions/checkout@v2
@@ -22,7 +22,7 @@ jobs:
            TARGET: ${{ secrets.TARGET_DIR }}                 
         
         run: |
-           'command -v ssh-agent >/dev/null || apt-get update && apt-get install -y openssh-client openssh-server'
+           command -v ssh-agent >/dev/null || apt-get update && apt-get install -y openssh-client openssh-server
            eval $(ssh-agent -s)
            echo "$PRIVATE_KEY" | tr -d '\r' | ssh-add -
            #mkdir ~/.ssh
