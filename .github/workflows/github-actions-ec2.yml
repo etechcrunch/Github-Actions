@@ -22,7 +22,7 @@ jobs:
            TARGET: ${{ secrets.TARGET_DIR }}                 
         
         run: |
-           sudo command -v ssh-agent >/dev/null || apt-get update && apt-get install -y openssh-client openssh-server
+           command -v ssh-agent >/dev/null || sudo apt-get update && apt-get install -y openssh-client openssh-server
            eval $(ssh-agent -s)
            echo "$PRIVATE_KEY" | tr -d '\r' | ssh-add -
            #mkdir ~/.ssh
