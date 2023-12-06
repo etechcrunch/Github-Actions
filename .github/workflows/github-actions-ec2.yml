@@ -22,14 +22,14 @@ jobs:
            TARGET: ${{ secrets.TARGET_DIR }}                 
         
         run: |
-           #command -v ssh-agent >/dev/null || sudo -s apt-get update && apt-get install -y openssh-client openssh-server
+           command -v ssh-agent >/dev/null || sudo -s apt-get update && apt-get install -y openssh-client openssh-server
            #eval $(ssh-agent -s)
            #echo "$PRIVATE_KEY" | tr -d '\r' | ssh-add -
            #mkdir ~/.ssh
            #echo "$PRIVATE_KEY" > ~/.ssh/id_rsa
            #chmod 600 ~/.ssh/id_rsa
-           echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-           ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} 
+           #echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+           #ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} 
               #sudo apt-get -y update
               #sudo apt-get install -y apache2
               #sudo systemctl start apache2
