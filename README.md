@@ -12,7 +12,6 @@ DNS : ec2-13-236-127-48.ap-southeast-2.compute.amazonaws.com
 
 Elastic IP: 13.236.127.48
 
-Also Elastic IP has been allocated:
 
 ![](media/616646e8463ecc8d7f860981b6799a50.png)
 
