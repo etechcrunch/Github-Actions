@@ -14,6 +14,16 @@ jobs:
 
     steps:
       - uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: 15.156.81.184
+          username: ec2-user
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          #port: ${{ secrets.PORT }}
+      #  command_timeout: 30m
+          script: | 
+            echo "Nice Job!!!"
+            pwd
+            ls -al
       #- uses: actions/checkout@v2
       #- name: Build & Deploy
       #  env:
